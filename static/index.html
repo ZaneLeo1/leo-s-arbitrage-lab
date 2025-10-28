@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="zh">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Pulse 3.2 · 跨交易所监控</title>
+  <link rel="stylesheet" href="/static/styles.css"/>
+</head>
+<body>
+  <div class="container">
+    <h1>Pulse 3.2 · 跨交易所监控</h1>
+
+    <div class="controls">
+      <label>均值窗口(秒):
+        <input type="number" id="windowSec" value="300" min="30" step="30"/>
+      </label>
+      <label>排序:
+        <select id="sortKey">
+          <option value="abs_spread">当前价差 |abs|</option>
+          <option value="spread">当前价差</option>
+          <option value="avg">平均价差</option>
+          <option value="z">Z-Score</option>
+          <option value="funding">资金费率均值</option>
+        </select>
+      </label>
+      <label>方向:
+        <select id="sortDir">
+          <option value="desc">降序</option>
+          <option value="asc">升序</option>
+        </select>
+      </label>
+      <button id="apply">应用</button>
+      <span id="status"></span>
+    </div>
+
+    <table id="tbl">
+      <thead>
+        <tr>
+          <th>Symbol</th>
+          <th>ExA</th>
+          <th>ExB</th>
+          <th>MidA</th>
+          <th>MidB</th>
+          <th>当前价差(%)</th>
+          <th>平均价差(%)</th>
+          <th>偏离 z-score</th>
+          <th>FundingA</th>
+          <th>FundingB</th>
+          <th>Funding均值</th>
+          <th>样本数</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+
+    <footer>
+      <div>每秒自动刷新 · 深色主题 · 支持排序与窗口调整</div>
+    </footer>
+  </div>
+
+  <script src="/static/app.js"></script>
+</body>
+</html>
