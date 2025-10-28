@@ -173,11 +173,6 @@ app = Flask(__name__, static_folder="static")
 @app.route("/")
 def index():
     return send_from_directory("static", "index.html")
-
-@app.route("/api/data")
-def data():
-    # 假设这里返回实时行情
-    return jsonify({"status": "ok", "msg": "data fetched"})
     
 
 @app.route("/api/data")
