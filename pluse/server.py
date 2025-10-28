@@ -166,6 +166,20 @@ app = Flask(__name__, static_url_path="/static", static_folder="static")
 def index():
     return send_from_directory("static", "index.html")
 
+from flask import Flask, jsonify, send_from_directory
+
+app = Flask(__name__, static_folder="static")
+
+@app.route("/")
+def index():
+    return send_from_directory("static", "index.html")
+
+@app.route("/api/data")
+def data():
+    # 假设这里返回实时行情
+    return jsonify({"status": "ok", "msg": "data fetched"})
+    
+
 @app.route("/api/data")
 def api_data():
     """
